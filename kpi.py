@@ -33,7 +33,7 @@ def solicitar_dados_usuario():
         return nome, salario, bonus
     except:
         print('Digite apenas números.')
-        solicitar_dados_usuario()
+        nome, salario, bonus = solicitar_dados_usuario()
         return nome, salario, bonus
 
 def calcular_bonus(salario, bonus):
