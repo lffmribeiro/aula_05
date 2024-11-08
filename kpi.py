@@ -17,6 +17,12 @@ Faça uma documentação simples de como executar esse programa, utilize o READM
 Salve no Git e no Github
 '''
 
+def pipeline_calculo_de_bonus():
+    nome, salario, bonus = solicitar_dados_usuario()
+    if nome is not None:
+        valor_bonus = calcular_bonus(salario, bonus)
+        devolutiva(nome, valor_bonus)
+
 def solicitar_dados_usuario():
     print("********** Bem-vindo à sua calculadora de bônus *************")
     print()
@@ -24,11 +30,11 @@ def solicitar_dados_usuario():
     try:
         salario = float(input('Insira seu salário: '))
         bonus = float(input('Insira o percentual em decimal do bônus: '))
+        return nome, salario, bonus
     except:
         print('Digite apenas números e o separador decimal precisa ser um ponto (".")')
-        return None, None, None
-    
-    return nome, salario, bonus
+        solicitar_dados_usuario()
+        return nome, salario, bonus
 
 def calcular_bonus(salario, bonus):
     valor = 1000 + salario * bonus
@@ -37,7 +43,5 @@ def calcular_bonus(salario, bonus):
 def devolutiva(nome, valor_bonus):
     print(f"Olá {nome}, o seu valor bônus foi de {valor_bonus}")
 
-nome, salario, bonus = solicitar_dados_usuario()
-if nome is not None:
-    valor_bonus = calcular_bonus(salario, bonus)
-    devolutiva(nome, valor_bonus)
+if __name__ == "__main__":
+    pipeline_calculo_de_bonus()
