@@ -26,13 +26,13 @@ def pipeline_calculo_de_bonus():
 def solicitar_dados_usuario():
     print("********** Bem-vindo à sua calculadora de bônus *************")
     print()
-    nome = input("Insira o seu nome: ")
     try:
-        salario = float(input('Insira seu salário: '))
-        bonus = float(input('Insira o percentual em decimal do bônus: '))
+        nome = input("Insira o seu nome: ")
+        salario = float(input('Insira seu salário: ').replace(',','.'))
+        bonus = float(input('Insira o percentual em decimal do bônus: ').replace(',','.'))
         return nome, salario, bonus
     except:
-        print('Digite apenas números e o separador decimal precisa ser um ponto (".")')
+        print('Digite apenas números.')
         solicitar_dados_usuario()
         return nome, salario, bonus
 
